@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECIPE.CO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo-stamp">
+      <span class="logo-mark">RECIPE.CO</span>
+      <span class="logo-sub">KITCHEN TICKET SYSTEM</span>
+    </div>
+    <div class="search-slot">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input type="text" id="search-input" placeholder="SEARCH DISH, INGREDIENT, CUISINE…" aria-label="Search recipes">
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="results-rail" id="results-rail" aria-label="Recipe results">
+
+      <div class="rail-meta">6 ORDERS ON THE RAIL</div>
+
+      <ul class="order-list" id="recipeList">
+<!-- 
+        <li class="order-stub stub--active" data-id="1" tabindex="0">
+          <img src="https://cdn.dummyjson.com/recipe-images/1.webp" alt="" class="stub-thumb" loading="lazy">
+          <div class="stub-info">
+            <span class="stub-num">#001</span>
+            <h3 class="stub-name">Classic Margherita Pizza</h3>
+            <span class="stub-cuisine">ITALIAN · MEDIUM</span>
+          </div>
+        </li>
+
+        <li class="order-stub" data-id="2" tabindex="0">
+          <img src="https://cdn.dummyjson.com/recipe-images/2.webp" alt="" class="stub-thumb" loading="lazy">
+          <div class="stub-info">
+            <span class="stub-num">#002</span>
+            <h3 class="stub-name">Loaded Street Tacos</h3>
+            <span class="stub-cuisine">MEXICAN · EASY</span>
+          </div>
+        </li>
+
+        <li class="order-stub" data-id="3" tabindex="0">
+          <img src="https://cdn.dummyjson.com/recipe-images/3.webp" alt="" class="stub-thumb" loading="lazy">
+          <div class="stub-info">
+            <span class="stub-num">#003</span>
+            <h3 class="stub-name">Shoyu Ramen, Soft Egg</h3>
+            <span class="stub-cuisine">ASIAN · HARD</span>
+          </div>
+        </li>
+
+        <li class="order-stub" data-id="4" tabindex="0">
+          <img src="https://cdn.dummyjson.com/recipe-images/4.webp" alt="" class="stub-thumb" loading="lazy">
+          <div class="stub-info">
+            <span class="stub-num">#004</span>
+            <h3 class="stub-name">Butter Chicken</h3>
+            <span class="stub-cuisine">INDIAN · MEDIUM</span>
+          </div>
+        </li>
+
+        <li class="order-stub" data-id="5" tabindex="0">
+          <img src="https://cdn.dummyjson.com/recipe-images/5.webp" alt="" class="stub-thumb" loading="lazy">
+          <div class="stub-info">
+            <span class="stub-num">#005</span>
+            <h3 class="stub-name">Classic Buttermilk Pancakes</h3>
+            <span class="stub-cuisine">AMERICAN · EASY</span>
+          </div>
+        </li>
+
+        <li class="order-stub" data-id="6" tabindex="0">
+          <img src="https://cdn.dummyjson.com/recipe-images/6.webp" alt="" class="stub-thumb" loading="lazy">
+          <div class="stub-info">
+            <span class="stub-num">#006</span>
+            <h3 class="stub-name">Greek Village Salad</h3>
+            <span class="stub-cuisine">MEDITERRANEAN · MEDIUM</span>
+          </div>
+        </li> -->
+
+      </ul>
+    </aside>
+
+    <!-- ============================================================
+         RIGHT — DETAIL PANE
+         One .detail-panel per recipe. Only the one matching the
+         active stub should be visible (no "hidden" attr) — the rest
+         carry hidden. JS toggles this on stub click by matching data-id.
+    ============================================================= -->
+    <section class="detail-pane" id="detail-pane">
+
+      <!-- ORDER #001 — visible by default, matches active stub -->
+      <!-- <article class="detail-panel" data-id="1">
+        <div class="perforation" aria-hidden="true"></div>
+
+        <div class="detail-head">
+          <span class="ticket-num">ORDER #001</span>
+          <span class="ticket-type">DINNER</span>
+        </div>
+
+        <div class="detail-image">
+          <img src="https://cdn.dummyjson.com/recipe-images/1.webp" alt="Classic Margherita Pizza" loading="lazy">
+          <span class="stamp stamp--medium">MEDIUM</span>
+        </div>
+
+        <h1 class="detail-name">Classic Margherita Pizza</h1>
+        <p class="detail-cuisine">ITALIAN</p>
+
+        <ul class="ticket-lines ticket-lines--detail">
+          <li><span>PREP TIME</span><i></i><b>20 min</b></li>
+          <li><span>COOK TIME</span><i></i><b>15 min</b></li>
+          <li><span>SERVINGS</span><i></i><b>4</b></li>
+          <li><span>CAL / SERVING</span><i></i><b>300 kcal</b></li>
+        </ul>
+
+        <div class="detail-footer">
+          <div class="rating" aria-label="Rating 4.6 out of 5">
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--half"></span>
+            <b>4.6</b>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Pizza</span><span class="tag">Italian</span><span class="tag">Cheese</span>
+          </div>
+        </div>
+
+        <div class="detail-columns">
+          <div class="ingredients-block">
+            <h2 class="block-title">INGREDIENTS</h2>
+            <ul class="ingredients-list">
+              <li>Pizza dough</li>
+              <li>Tomato sauce</li>
+              <li>Fresh mozzarella</li>
+              <li>Fresh basil leaves</li>
+              <li>Olive oil</li>
+              <li>Salt</li>
+            </ul>
+          </div>
+
+          <div class="instructions-block">
+            <h2 class="block-title">INSTRUCTIONS</h2>
+            <ol class="instructions-list">
+              <li>Preheat oven to 475°F with a pizza stone inside.</li>
+              <li>Roll out the dough on a floured surface.</li>
+              <li>Spread tomato sauce, leaving a border for the crust.</li>
+              <li>Top with torn mozzarella pieces.</li>
+              <li>Bake 12–15 min until crust is golden and cheese bubbles.</li>
+              <li>Finish with fresh basil and a drizzle of olive oil.</li>
+            </ol>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Remaining orders — hidden until their stub is clicked -->
+      <!-- <article class="detail-panel" data-id="2" hidden>
+        <div class="perforation" aria-hidden="true"></div>
+        <div class="detail-head">
+          <span class="ticket-num">ORDER #002</span>
+          <span class="ticket-type">LUNCH</span>
+        </div>
+        <div class="detail-image">
+          <img src="https://cdn.dummyjson.com/recipe-images/2.webp" alt="Loaded Street Tacos" loading="lazy">
+          <span class="stamp stamp--easy">EASY</span>
+        </div>
+        <h1 class="detail-name">Loaded Street Tacos</h1>
+        <p class="detail-cuisine">MEXICAN</p>
+        <ul class="ticket-lines ticket-lines--detail">
+          <li><span>PREP TIME</span><i></i><b>15 min</b></li>
+          <li><span>COOK TIME</span><i></i><b>10 min</b></li>
+          <li><span>SERVINGS</span><i></i><b>3</b></li>
+          <li><span>CAL / SERVING</span><i></i><b>240 kcal</b></li>
+        </ul>
+        <div class="detail-footer">
+          <div class="rating" aria-label="Rating 4.2 out of 5">
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot"></span>
+            <b>4.2</b>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Tacos</span><span class="tag">Street Food</span><span class="tag">Beef</span>
+          </div>
+        </div>
+        <div class="detail-columns">
+          <div class="ingredients-block">
+            <h2 class="block-title">INGREDIENTS</h2>
+            <ul class="ingredients-list">
+              <li>Corn tortillas</li>
+              <li>Ground beef</li>
+              <li>White onion</li>
+              <li>Cilantro</li>
+              <li>Lime</li>
+              <li>Salsa roja</li>
+            </ul>
+          </div>
+          <div class="instructions-block">
+            <h2 class="block-title">INSTRUCTIONS</h2>
+            <ol class="instructions-list">
+              <li>Brown the beef with onion and spices.</li>
+              <li>Warm tortillas on a dry skillet.</li>
+              <li>Fill tortillas with beef.</li>
+              <li>Top with onion, cilantro, and a squeeze of lime.</li>
+              <li>Serve with salsa roja on the side.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="detail-panel" data-id="3" hidden>
+        <div class="perforation" aria-hidden="true"></div>
+        <div class="detail-head">
+          <span class="ticket-num">ORDER #003</span>
+          <span class="ticket-type">DINNER</span>
+        </div>
+        <div class="detail-image">
+          <img src="https://cdn.dummyjson.com/recipe-images/3.webp" alt="Shoyu Ramen" loading="lazy">
+          <span class="stamp stamp--hard">HARD</span>
+        </div>
+        <h1 class="detail-name">Shoyu Ramen, Soft Egg</h1>
+        <p class="detail-cuisine">ASIAN</p>
+        <ul class="ticket-lines ticket-lines--detail">
+          <li><span>PREP TIME</span><i></i><b>30 min</b></li>
+          <li><span>COOK TIME</span><i></i><b>3 hr</b></li>
+          <li><span>SERVINGS</span><i></i><b>2</b></li>
+          <li><span>CAL / SERVING</span><i></i><b>520 kcal</b></li>
+        </ul>
+        <div class="detail-footer">
+          <div class="rating" aria-label="Rating 4.9 out of 5">
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span>
+            <b>4.9</b>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Ramen</span><span class="tag">Noodles</span><span class="tag">Broth</span>
+          </div>
+        </div>
+        <div class="detail-columns">
+          <div class="ingredients-block">
+            <h2 class="block-title">INGREDIENTS</h2>
+            <ul class="ingredients-list">
+              <li>Ramen noodles</li>
+              <li>Shoyu tare</li>
+              <li>Chicken broth</li>
+              <li>Soft-boiled egg</li>
+              <li>Chashu pork</li>
+              <li>Scallions</li>
+            </ul>
+          </div>
+          <div class="instructions-block">
+            <h2 class="block-title">INSTRUCTIONS</h2>
+            <ol class="instructions-list">
+              <li>Simmer broth with aromatics for 3 hours.</li>
+              <li>Marinate eggs in shoyu tare overnight.</li>
+              <li>Cook noodles to al dente.</li>
+              <li>Ladle broth over noodles.</li>
+              <li>Top with chashu, egg, and scallions.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="detail-panel" data-id="4" hidden>
+        <div class="perforation" aria-hidden="true"></div>
+        <div class="detail-head">
+          <span class="ticket-num">ORDER #004</span>
+          <span class="ticket-type">DINNER</span>
+        </div>
+        <div class="detail-image">
+          <img src="https://cdn.dummyjson.com/recipe-images/4.webp" alt="Butter Chicken" loading="lazy">
+          <span class="stamp stamp--medium">MEDIUM</span>
+        </div>
+        <h1 class="detail-name">Butter Chicken</h1>
+        <p class="detail-cuisine">INDIAN</p>
+        <ul class="ticket-lines ticket-lines--detail">
+          <li><span>PREP TIME</span><i></i><b>20 min</b></li>
+          <li><span>COOK TIME</span><i></i><b>40 min</b></li>
+          <li><span>SERVINGS</span><i></i><b>4</b></li>
+          <li><span>CAL / SERVING</span><i></i><b>430 kcal</b></li>
+        </ul>
+        <div class="detail-footer">
+          <div class="rating" aria-label="Rating 4.7 out of 5">
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--half"></span>
+            <b>4.7</b>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Curry</span><span class="tag">Chicken</span><span class="tag">Spicy</span>
+          </div>
+        </div>
+        <div class="detail-columns">
+          <div class="ingredients-block">
+            <h2 class="block-title">INGREDIENTS</h2>
+            <ul class="ingredients-list">
+              <li>Chicken thighs</li>
+              <li>Tomato purée</li>
+              <li>Butter</li>
+              <li>Cream</li>
+              <li>Garam masala</li>
+              <li>Garlic ginger paste</li>
+            </ul>
+          </div>
+          <div class="instructions-block">
+            <h2 class="block-title">INSTRUCTIONS</h2>
+            <ol class="instructions-list">
+              <li>Marinate chicken in yogurt and spices.</li>
+              <li>Sear chicken and set aside.</li>
+              <li>Simmer tomato purée with butter and spices.</li>
+              <li>Return chicken to the sauce.</li>
+              <li>Stir in cream and finish cooking.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="detail-panel" data-id="5" hidden>
+        <div class="perforation" aria-hidden="true"></div>
+        <div class="detail-head">
+          <span class="ticket-num">ORDER #005</span>
+          <span class="ticket-type">BREAKFAST</span>
+        </div>
+        <div class="detail-image">
+          <img src="https://cdn.dummyjson.com/recipe-images/5.webp" alt="Buttermilk Pancakes" loading="lazy">
+          <span class="stamp stamp--easy">EASY</span>
+        </div>
+        <h1 class="detail-name">Classic Buttermilk Pancakes</h1>
+        <p class="detail-cuisine">AMERICAN</p>
+        <ul class="ticket-lines ticket-lines--detail">
+          <li><span>PREP TIME</span><i></i><b>10 min</b></li>
+          <li><span>COOK TIME</span><i></i><b>15 min</b></li>
+          <li><span>SERVINGS</span><i></i><b>4</b></li>
+          <li><span>CAL / SERVING</span><i></i><b>350 kcal</b></li>
+        </ul>
+        <div class="detail-footer">
+          <div class="rating" aria-label="Rating 4.4 out of 5">
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot"></span>
+            <b>4.4</b>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Breakfast</span><span class="tag">Sweet</span><span class="tag">Kid-friendly</span>
+          </div>
+        </div>
+        <div class="detail-columns">
+          <div class="ingredients-block">
+            <h2 class="block-title">INGREDIENTS</h2>
+            <ul class="ingredients-list">
+              <li>Flour</li>
+              <li>Buttermilk</li>
+              <li>Eggs</li>
+              <li>Baking powder</li>
+              <li>Sugar</li>
+              <li>Butter</li>
+            </ul>
+          </div>
+          <div class="instructions-block">
+            <h2 class="block-title">INSTRUCTIONS</h2>
+            <ol class="instructions-list">
+              <li>Whisk dry ingredients together.</li>
+              <li>Whisk wet ingredients separately.</li>
+              <li>Combine, don't overmix — some lumps are fine.</li>
+              <li>Cook on a buttered griddle until bubbles form.</li>
+              <li>Flip and cook until golden.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="detail-panel" data-id="6" hidden>
+        <div class="perforation" aria-hidden="true"></div>
+        <div class="detail-head">
+          <span class="ticket-num">ORDER #006</span>
+          <span class="ticket-type">LUNCH</span>
+        </div>
+        <div class="detail-image">
+          <img src="https://cdn.dummyjson.com/recipe-images/6.webp" alt="Greek Village Salad" loading="lazy">
+          <span class="stamp stamp--medium">MEDIUM</span>
+        </div>
+        <h1 class="detail-name">Greek Village Salad</h1>
+        <p class="detail-cuisine">MEDITERRANEAN</p>
+        <ul class="ticket-lines ticket-lines--detail">
+          <li><span>PREP TIME</span><i></i><b>15 min</b></li>
+          <li><span>COOK TIME</span><i></i><b>0 min</b></li>
+          <li><span>SERVINGS</span><i></i><b>2</b></li>
+          <li><span>CAL / SERVING</span><i></i><b>210 kcal</b></li>
+        </ul>
+        <div class="detail-footer">
+          <div class="rating" aria-label="Rating 4.3 out of 5">
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot dot--on"></span><span class="dot dot--on"></span>
+            <span class="dot"></span>
+            <b>4.3</b>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Salad</span><span class="tag">Vegetarian</span><span class="tag">Fresh</span>
+          </div>
+        </div>
+        <div class="detail-columns">
+          <div class="ingredients-block">
+            <h2 class="block-title">INGREDIENTS</h2>
+            <ul class="ingredients-list">
+              <li>Tomatoes</li>
+              <li>Cucumber</li>
+              <li>Red onion</li>
+              <li>Kalamata olives</li>
+              <li>Feta cheese</li>
+              <li>Olive oil</li>
+            </ul>
+          </div>
+          <div class="instructions-block">
+            <h2 class="block-title">INSTRUCTIONS</h2>
+            <ol class="instructions-list">
+              <li>Chop tomatoes, cucumber, and onion into chunks.</li>
+              <li>Combine in a bowl with olives.</li>
+              <li>Top with a block of feta, not crumbled.</li>
+              <li>Drizzle with olive oil and oregano.</li>
+              <li>Serve immediately.</li>
+            </ol>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Empty state — show this instead of any .detail-panel when
+           nothing is selected yet (e.g. before first click / page load) -->
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-stamp">VOID</span>
+        <p>NO ORDER SELECTED.</p>
+        <p class="empty-sub">Click a ticket on the left to view the recipe.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       TEMPLATE FOR JS — clone this per recipe from the DummyJSON
+       /recipes response for BOTH the rail stub and the detail panel.
+  ============================================================= -->
+  <template id="order-stub-template">
+    <li class="order-stub" data-id="">
+      <img data-field="image" alt="" class="stub-thumb" loading="lazy">
+      <div class="stub-info">
+        <span class="stub-num"></span>
+        <h3 class="stub-name" data-field="name"></h3>
+        <span class="stub-cuisine"></span>
+      </div>
+    </li>
+  </template>
+
+  <template id="detail-panel-template">
+    <article class="detail-panel" data-id="">
+      <div class="perforation" aria-hidden="true"></div>
+      <div class="detail-head">
+        <span class="ticket-num"></span>
+        <span class="ticket-type" data-field="mealType"></span>
+      </div>
+      <div class="detail-image">
+        <img data-field="image" alt="">
+        <span class="stamp" data-field="difficulty"></span>
+      </div>
+      <h1 class="detail-name" data-field="name"></h1>
+      <p class="detail-cuisine" data-field="cuisine"></p>
+      <ul class="ticket-lines ticket-lines--detail">
+        <li><span>PREP TIME</span><i></i><b data-field="prepTimeMinutes"></b></li>
+        <li><span>COOK TIME</span><i></i><b data-field="cookTimeMinutes"></b></li>
+        <li><span>SERVINGS</span><i></i><b data-field="servings"></b></li>
+        <li><span>CAL / SERVING</span><i></i><b data-field="caloriesPerServing"></b></li>
+      </ul>
+      <div class="detail-footer">
+        <div class="rating" data-field="rating"></div>
+        <div class="tag-row" data-field="tags"></div>
+      </div>
+      <div class="detail-columns">
+        <div class="ingredients-block">
+          <h2 class="block-title">INGREDIENTS</h2>
+          <ul class="ingredients-list" data-field="ingredients"></ul>
+        </div>
+        <div class="instructions-block">
+          <h2 class="block-title">INSTRUCTIONS</h2>
+          <ol class="instructions-list" data-field="instructions"></ol>
+        </div>
+      </div>
+    </article>
+  </template>
+
+
+  <script src="api.js"></script>
+</body>
+</html>
